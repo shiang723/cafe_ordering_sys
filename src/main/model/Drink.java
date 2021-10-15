@@ -19,7 +19,7 @@ public class Drink implements MenuItem {
 
     //Drink has a name, price, and description and its drinkSize is set at small, and it has a new Arraylist, addOns.
     //It makes the given name, price and description equal to the already declared fields above.
-    //price >= 0
+    //price >
     public Drink(String name, Integer price, String description) {
         this.drinkName = name;
         this.price = price;

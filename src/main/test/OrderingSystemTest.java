@@ -40,6 +40,7 @@ public class OrderingSystemTest {
 
     }
 
+
     @Test
     public void testEmptyReceipt() {
         assertEquals("You have ordered: " + "[]" + "." + "Which is "

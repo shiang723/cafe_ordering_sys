@@ -19,12 +19,12 @@ public class OrderingSystem {
 
     // MODIFIES: this
     // EFFECTS: add the given item to the cart ArrayList and return the changed Ordering System
+    //          as well as add to the totalPrice and numOfItems
     public OrderingSystem addItemToCart(MenuItem item) {
         this.cart.add(item);
         this.totalPrice = totalPrice + item.getPrice();
         this.numOfItems++;
         return this;
-
     }
 
     // EFFECTS: returns the numOfItems
@@ -48,7 +48,7 @@ public class OrderingSystem {
         for (MenuItem menuItem : cart) {
             finalOrder.add((menuItem.getName()));
         }
-        return "You have ordered: " + finalOrder  + "." + "Which is "
+        return "You have ordered: " + finalOrder + "." + "Which is "
                 + numOfItems + " item(s). That will be " + totalPrice + " cents.";
 
     }
