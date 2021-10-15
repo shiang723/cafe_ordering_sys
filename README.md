@@ -14,3 +14,12 @@ a virtual ordering system
 - It allows for a lot of creativity because there are few restrictions for this project
 - It allows me to review everything I learned so far and apply it
 - It allows me to really practice more with Java 
+
+
+##User Stories
+- As a user, I want to be able to see the price of the item 
+- As a user, I want to be able to know what is in my cart
+- As a user, I want to be able to change the size of my drinks
+- As a user, I want to be able to add an item to my cart
+- As a user, I want to be able to customize my drinks
+- As a user, I want to be able to have a short description of the item
