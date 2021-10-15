@@ -12,17 +12,12 @@ public class AddOnsTest {
 
     @BeforeEach
     public void setup() {
-        sugar = new AddOns("sugar", 1);
+        sugar = new AddOns("sugar");
     }
 
     @Test
     public void testGetItem() {
         assertEquals("sugar", sugar.getItem());
-    }
-
-    @Test
-    public void testGetAmount() {
-        assertEquals(1, sugar.getAmount());
     }
 
 }

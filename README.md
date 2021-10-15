@@ -5,8 +5,8 @@ My application will be a Cafe ordering Menu, where users will be able to select 
 The owner of this Cafe can add what ever drink or bakery item they want to their ordering menu.
 
 ## Who will use it?
-People who would go to this Cafe and want to order their drinks or food with no face to face contact. Cafe owners who want to set up
-a virtual ordering system
+People who would go to this Cafe and want to order their drinks or food and pay up front, so they can skip the line.
+Busy Cafes can use this to help speed up their lines.
 
 ## Why is this project of interest to you?
 
@@ -20,6 +20,6 @@ a virtual ordering system
 - As a user, I want to be able to see the price of the item 
 - As a user, I want to be able to know what is in my cart
 - As a user, I want to be able to change the size of my drinks
-- As a user, I want to be able to add an item to my cart
+- As a user, I want to be able to as many items as I want to my cart
 - As a user, I want to be able to customize my drinks
 - As a user, I want to be able to have a short description of the item

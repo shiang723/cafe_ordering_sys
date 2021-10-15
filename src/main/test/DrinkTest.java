@@ -50,20 +50,11 @@ class DrinkTest {
     }
 
     @Test
-    public void testAddOptionalSugarOne() {
-        Drink addSugar = espresso.addOptional("sugar", 1);
+    public void testAddOptionalSugar() {
+        Drink addSugar = espresso.addOptional("sugar");
         ArrayList<AddOns> espressoAddOn = addSugar.getAddOns();
         assertEquals(1, espressoAddOn.size());
         assertEquals(255, addSugar.getPrice());
-    }
-
-    @Test
-    public void testAddOptionalSugarTwo() {
-        Drink addSugarOne = espresso.addOptional("sugar", 2);
-        Drink addSugarTwo = espresso.addOptional("sugar", 1);
-        ArrayList<AddOns> espressoAddOn = addSugarTwo.getAddOns();
-        assertEquals(2, espressoAddOn.size());
-        assertEquals(260, addSugarTwo.getPrice());
     }
 
 }
