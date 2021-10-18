@@ -16,7 +16,7 @@ Busy Cafes can use this to help speed up their lines.
 - It allows me to really practice more with Java 
 
 
-##User Stories
+## User Stories
 - As a user, I want to be able to see the price of the item 
 - As a user, I want to be able to know what is in my cart
 - As a user, I want to be able to change the size of my drinks

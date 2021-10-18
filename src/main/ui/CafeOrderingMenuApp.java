@@ -55,7 +55,7 @@ public class CafeOrderingMenuApp {
         } else if (command.equals("c")) {
             order.addItemToCart(cake);
         } else if (command.equals("i")) {
-            processsDrinkMenuIcedCoffee(null);
+            processDrinkMenuIcedCoffee(null);
         } else if (command.equals("a")) {
             order.addItemToCart(appletart);
         } else {
@@ -85,7 +85,7 @@ public class CafeOrderingMenuApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    private void processsDrinkMenuIcedCoffee(String command) {
+    private void processDrinkMenuIcedCoffee(String command) {
         displayDrinkSizeMenu();
         command = input.next();
         command = command.toLowerCase();

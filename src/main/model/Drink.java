@@ -63,16 +63,12 @@ public class Drink implements MenuItem {
         if (size.equals("small")) {
             return this;
         } else if (size.equals("medium")) {
-            if (!this.getDrinkSize().equals("medium")) {
-                this.drinkSize = "medium";
-                this.price = this.price + PRICE_UPGRADE;
-            }
+            this.drinkSize = "medium";
+            this.price = this.price + PRICE_UPGRADE;
             return this;
         } else {
-            if (!this.getDrinkSize().equals("large")) {
-                this.drinkSize = "large";
-                this.price = this.price + (PRICE_UPGRADE * 2);
-            }
+            this.drinkSize = "large";
+            this.price = this.price + (PRICE_UPGRADE * 2);
             return this;
         }
     }
