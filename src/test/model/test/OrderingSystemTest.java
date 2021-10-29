@@ -3,6 +3,8 @@ package model.test;
 import model.BakeryItem;
 import model.Drink;
 import model.OrderingSystem;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +15,7 @@ public class OrderingSystemTest {
     OrderingSystem order1;
     OrderingSystem order2;
     Drink drink1;
+    JSONObject json1;
 
     @BeforeEach
     public void setup() {
@@ -71,6 +74,27 @@ public class OrderingSystemTest {
 
     }
 
+    @Test
+    public void testToJson() {
+        json1 = new JSONObject();
+        json1 = order1.toJson();
+        JSONArray json1cart = json1.getJSONArray("cart");
+        assertEquals(order1.getCart().size(),json1cart.length());
+
+        order2.addItemToCart(drink1);
+        json1 = order2.toJson();
+        JSONArray json2cart = json1.getJSONArray("cart");
+        assertEquals(order2.getCart().size(),json2cart.length());
+
+        order2.addItemToCart(drink1);
+        json1 = order2.toJson();
+        JSONArray json3cart = json1.getJSONArray("cart");
+        assertEquals(order2.getCart().size(),json3cart.length());
+
+
+
+
+    }
 
 
 

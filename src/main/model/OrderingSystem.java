@@ -1,8 +1,12 @@
 package model;
 
 import java.util.ArrayList;
-import model.AddOns;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+// This [class/method] references code from these [repo/website]
+// Link: [https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git]
 //Represents the process of Ordering
 //totalPrice >= 0
 public class OrderingSystem {
@@ -10,6 +14,7 @@ public class OrderingSystem {
     private ArrayList<MenuItem> cart;
     private Integer totalPrice;
     private Integer numOfItems;
+
 
     //EFFECTS: creates new Ordering System
     //         and OrderingSystem declares cart as a new ArrayList, and make totalPrice = 0 and numOfItems = 0
@@ -53,6 +58,24 @@ public class OrderingSystem {
         return "You have ordered: " + finalOrder + "." + "Which is "
                 + numOfItems + " item(s). That will be " + totalPrice + " cents.";
 
+    }
+
+    // EFFECTS: returns this as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("cart", itemsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns items in this OrderingSystem as a JSON array
+    private JSONArray itemsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (MenuItem m : cart) {
+            jsonArray.put(m.toJson());
+        }
+
+        return jsonArray;
     }
 
 }

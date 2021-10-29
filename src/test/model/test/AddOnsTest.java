@@ -16,8 +16,18 @@ public class AddOnsTest {
     }
 
     @Test
-    public void testGetItem() {
-        assertEquals("sugar", sugar.getItem());
+    public void testGetName() {
+        assertEquals("sugar", sugar.getName());
+    }
+
+    @Test
+    public void testGetDescription() {
+        assertEquals("a teaspoon of sugar", sugar.getDescription());
+    }
+
+    @Test
+    public void testGetPrice() {
+        assertEquals(5, sugar.getPrice());
     }
 
 }

@@ -1,0 +1,21 @@
+{"cart": [
+  {
+    "drink price": 500,
+    "drink name": "Iced Coffee",
+    "drink description": "Classic Iced Coffee",
+    "drink addon": "",
+    "drink addon description": ""
+  },
+  {
+    "bakeryitem price": 600,
+    "bakeryitem description": "Sweet apple tart",
+    "bakeryitem name": "Apple Tart"
+  },
+  {
+    "drink price": 505,
+    "drink name": "Iced Coffee",
+    "drink description": "Classic Iced Coffee",
+    "drink addon": "sugar",
+    "drink addon description": "some sugar"
+  }
+]}

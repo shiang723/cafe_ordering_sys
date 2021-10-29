@@ -1,5 +1,9 @@
 package model;
 
+import org.json.JSONObject;
+
+// This [class/method] references code from these [repo/website]
+// Link: [https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git]
 // Represents a Bakery Item object that is a subtype of MenuItem
 // It takes 3 parameters name = name of product, price = price of product, and description = a bit about the item
 public class BakeryItem implements MenuItem {
@@ -7,8 +11,8 @@ public class BakeryItem implements MenuItem {
     private String description;
     private String bakeryItemName;
 
-    //BakeryItems take the 3 parameters and make them the value of the predeclared private fields above.
-    //price >= 0
+    //REQUIRES: price >= 0
+    //EFFECTS: create new BakeryItem, takes 3 parameters and make them the value of the predeclared private fields above
     public BakeryItem(String name, Integer price, String description) {
         this.bakeryItemName = name;
         this.price = price;
@@ -32,5 +36,15 @@ public class BakeryItem implements MenuItem {
     @Override
     public String getDescription() {
         return description;
+    }
+
+    // EFFECTS: returns this as JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("bakeryitem name", bakeryItemName);
+        json.put("bakeryitem price", price);
+        json.put("bakeryitem description", description);
+        return json;
     }
 }

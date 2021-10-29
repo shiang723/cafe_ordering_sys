@@ -1,7 +1,9 @@
 package model;
 
-import java.util.ArrayList;
+import org.json.JSONObject;
 
+// This [class/method] references code from these [repo/website]
+// Link: [https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git]
 //Represent Drink object that is a subtype of MenuItem.
 //It takes 3 parameter, name = name of drink, price = price of drink, description = a bit about the drink
 //ADD_PRICE >= 0 as we can not charge a negative value, money wise
@@ -14,18 +16,18 @@ public class Drink implements MenuItem {
     private String drinkName;
     private Integer price;
     private String drinkSize;
-    private ArrayList<AddOns> addOns;
+    private AddOns addOn;
     private String description;
 
-    //Drink has a name, price, and description and its drinkSize is set at small, and it has a new Arraylist, addOns.
-    //It makes the given name, price and description equal to the already declared fields above.
-    //price >= 0
+    //REQUIRES: price >= 0
+    //EFFECTS: creates new Drink and
+    //         makes the given name, price and description equal to the already declared fields above.
     public Drink(String name, Integer price, String description) {
         this.drinkName = name;
         this.price = price;
         this.description = description;
         this.drinkSize = "small";
-        this.addOns = new ArrayList<>();
+        this.addOn = new AddOns("", "");
     }
 
     //EFFECTS: return name of the drink
@@ -46,14 +48,26 @@ public class Drink implements MenuItem {
         return this.description;
     }
 
+    // EFFECTS: returns this as JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("drink name", drinkName);
+        json.put("drink price",price);
+        json.put("drink description", description);
+        json.put("drink addon", addOn.getName());
+        json.put("drink addon description", addOn.getDescription());
+        return json;
+    }
+
     // EFFECTS: returns the drinkSize
     public String getDrinkSize() {
         return this.drinkSize;
     }
 
     // EFFECTS: return the list of AddOns
-    public ArrayList<AddOns> getAddOns() {
-        return this.addOns;
+    public AddOns getAddOn() {
+        return this.addOn;
     }
 
     // REQUIRES: size parameter can only be either "small", "medium", "large"
@@ -75,10 +89,17 @@ public class Drink implements MenuItem {
 
 
     // MODIFIES: this
-    // EFFECTS: Add an AddOn to the AddOn list and changes the price, then return the changed Drink
+    // EFFECTS: makes a new AddOn and changes the price, then return the changed Drink
     public Drink addOptional(String addOnItem, String addOnDescription) {
-        this.addOns.add(new AddOns(addOnItem, addOnDescription));
+        this.addOn = new AddOns(addOnItem, addOnDescription);
         this.price = this.price + ADD_PRICE;
+        return this;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: makes a new AddOn then return the changed Drink
+    public Drink addOptionalWithNoPrice(String addOnItem, String addOnDescription) {
+        this.addOn = new AddOns(addOnItem, addOnDescription);
         return this;
     }
 
