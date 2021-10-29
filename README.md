@@ -23,3 +23,5 @@ Busy Cafes can use this to help speed up their lines.
 - As a user, I want to be able to as many items as I want to my cart
 - As a user, I want to be able to customize my drinks
 - As a user, I want to be able to have a short description of the item
+- As a user, I want to be able to save my order to a file 
+- As a user, I want to be able to open up a previously saved file and resume ordering
