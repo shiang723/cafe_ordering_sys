@@ -12,11 +12,13 @@ public class OrderingSystemTest {
 
     OrderingSystem order1;
     OrderingSystem order2;
+    Drink drink1;
 
     @BeforeEach
     public void setup() {
         order1 = new OrderingSystem();
         order2 = new OrderingSystem();
+        drink1 = new Drink("Iced Coffee", 450, " A new cup of iced coffee");
     }
 
     @Test
@@ -38,6 +40,12 @@ public class OrderingSystemTest {
         assertEquals(1000, order1.getTotalPrice());
         assertEquals(2, order1.getCart().size());
 
+        drink1.addOptional("sugar", "a teaspoon of sugar");
+        order2.addItemToCart(drink1);
+
+        assertEquals(2, order2.getNumOfItems());
+        assertEquals(855, order2.getTotalPrice());
+        assertEquals(2, order2.getCart().size());
     }
 
 
@@ -56,6 +64,11 @@ public class OrderingSystemTest {
         order1.addItemToCart(new Drink("Green Tea", 400, "Refreshing Green Tea"));
         assertEquals("You have ordered: " + "[Cake, Green Tea]" + "." + "Which is " + order1.getNumOfItems()
                 + " item(s). That will be " + order1.getTotalPrice() + " cents.", order1.receipt());
+        drink1.addOptional("creamer", "a tablespoon of cream");
+        order1.addItemToCart(drink1);
+        assertEquals("You have ordered: " + "[Cake, Green Tea, Iced Coffee]" + "." + "Which is " + order1.getNumOfItems()
+                + " item(s). That will be " + order1.getTotalPrice() + " cents.", order1.receipt());
+
     }
 
 

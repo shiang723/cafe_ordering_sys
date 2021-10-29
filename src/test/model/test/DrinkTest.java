@@ -51,7 +51,7 @@ class DrinkTest {
 
     @Test
     public void testAddOptionalSugar() {
-        Drink addSugar = espresso.addOptional("sugar");
+        Drink addSugar = espresso.addOptional("sugar","a teaspoon of sugar");
         ArrayList<AddOns> espressoAddOn = addSugar.getAddOns();
         assertEquals(1, espressoAddOn.size());
         assertEquals(255, addSugar.getPrice());

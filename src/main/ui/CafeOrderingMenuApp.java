@@ -1,5 +1,6 @@
 package ui;
 
+import model.AddOns;
 import model.BakeryItem;
 import model.Drink;
 import model.OrderingSystem;
@@ -17,6 +18,8 @@ public class CafeOrderingMenuApp {
     private BakeryItem appletart;
     private OrderingSystem order;
     private Scanner input;
+    private AddOns addOn1;
+    private AddOns addOn2;
 
     // EFFECTS: runs the CafeOrderingMenu application
     public CafeOrderingMenuApp() {
@@ -39,7 +42,7 @@ public class CafeOrderingMenuApp {
             if (command.equals("q")) {
                 keepGoing = false;
             } else {
-                processMainMenu(command);
+                processMainMenu(null);
             }
         }
         printReceipt();
@@ -49,97 +52,79 @@ public class CafeOrderingMenuApp {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processMainMenu(String command) {
+        command = input.next();
+        command = command.toLowerCase();
         initDrink();
-        if (command.equals("e")) {
-            processDrinkMenuEspresso(null);
-        } else if (command.equals("c")) {
-            order.addItemToCart(cake);
-        } else if (command.equals("i")) {
-            processDrinkMenuIcedCoffee(null);
-        } else if (command.equals("a")) {
-            order.addItemToCart(appletart);
-        } else {
-            System.out.println("Selection not valid...");
+        switch (command) {
+            case "e":
+                processDrinkMenuSize(null, espresso);
+                break;
+            case "c":
+                order.addItemToCart(cake);
+                break;
+            case "i":
+                processDrinkMenuSize(null, icedcoffee);
+                break;
+            case "a":
+                order.addItemToCart(appletart);
+                break;
+            default:
+                System.out.println("Selection not valid...");
+                break;
         }
+        printReceipt();
     }
 
-    // MODIFIES: this
+    // MODIFIES: this and drink
     // EFFECTS: processes user command
-    private void processDrinkMenuEspresso(String command) {
+    private void processDrinkMenuSize(String command, Drink drink) {
         displayDrinkSizeMenu();
         command = input.next();
         command = command.toLowerCase();
-        if (command.equals("s")) {
-            espresso.chooseSize("small");
-            processDrinkMenuAddOnsEspresso(null);
-        } else if (command.equals("m")) {
-            espresso.chooseSize("medium");
-            processDrinkMenuAddOnsEspresso(null);
-        } else if (command.equals("l")) {
-            espresso.chooseSize("large");
-            processDrinkMenuAddOnsEspresso(null);
-        } else {
-            System.out.println("Selection not valid...");
+        switch (command) {
+            case "s":
+                drink.chooseSize("small");
+                processDrinkMenuAddOns(null, drink);
+                break;
+            case "m":
+                drink.chooseSize("medium");
+                processDrinkMenuAddOns(null, drink);
+                break;
+            case "l":
+                drink.chooseSize("large");
+                processDrinkMenuAddOns(null, drink);
+                break;
+            default:
+                System.out.println("Selection not valid...");
+                break;
         }
     }
 
-    // MODIFIES: this
-    // EFFECTS: processes user command
-    private void processDrinkMenuIcedCoffee(String command) {
-        displayDrinkSizeMenu();
-        command = input.next();
-        command = command.toLowerCase();
-        if (command.equals("s")) {
-            icedcoffee.chooseSize("small");
-            processDrinkMenuAddOnsIcedCoffee(null);
-        } else if (command.equals("m")) {
-            icedcoffee.chooseSize("medium");
-            processDrinkMenuAddOnsIcedCoffee(null);
-        } else if (command.equals("l")) {
-            icedcoffee.chooseSize("large");
-            processDrinkMenuAddOnsIcedCoffee(null);
-        } else {
-            System.out.println("Selection not valid...");
-        }
-    }
 
-    // MODIFIES: this
+    // MODIFIES: this and drink
     // EFFECTS: processes user command
-    private void processDrinkMenuAddOnsEspresso(String command) {
+    private void processDrinkMenuAddOns(String command, Drink drink) {
         displayDrinkAddOnMenu();
         command = input.next();
         command = command.toLowerCase();
-        if (command.equals("s")) {
-            espresso.addOptional("sugar");
-            order.addItemToCart(espresso);
-        } else if (command.equals("c")) {
-            espresso.addOptional("creamer");
-            order.addItemToCart(espresso);
-        } else if (command.equals("n")) {
-            order.addItemToCart(espresso);
-        } else {
-            System.out.println("Selection not valid...");
+        switch (command) {
+            case "s":
+                drink.addOptional(addOn1.getItem(), addOn1.getDescription());
+                order.addItemToCart(drink);
+                break;
+            case "c":
+                drink.addOptional(addOn2.getItem(), addOn2.getDescription());
+                order.addItemToCart(drink);
+                break;
+            case "n":
+                order.addItemToCart(drink);
+                break;
+            default:
+                System.out.println("Selection not valid...");
+                break;
         }
     }
 
-    // MODIFIES: this
-    // EFFECTS: processes user command
-    private void processDrinkMenuAddOnsIcedCoffee(String command) {
-        displayDrinkAddOnMenu();
-        command = input.next();
-        command = command.toLowerCase();
-        if (command.equals("s")) {
-            icedcoffee.addOptional("sugar");
-            order.addItemToCart(icedcoffee);
-        } else if (command.equals("c")) {
-            icedcoffee.addOptional("creamer");
-            order.addItemToCart(icedcoffee);
-        } else if (command.equals("n")) {
-            order.addItemToCart(icedcoffee);
-        } else {
-            System.out.println("Selection not valid...");
-        }
-    }
 
     // MODIFIES: this
     // EFFECTS: initializes menu items and fields
@@ -157,6 +142,8 @@ public class CafeOrderingMenuApp {
     private void initDrink() {
         espresso = new Drink("Espresso", 300, "A simple espresso.");
         icedcoffee = new Drink("Iced Coffee", 500, "Classic Iced Coffee");
+        addOn1 = new AddOns("sugar", "a teaspoon of sugar");
+        addOn2 = new AddOns("creamer", "a tablespoon of creamer");
     }
 
     // EFFECTS: displays a menu with options to user
@@ -179,7 +166,7 @@ public class CafeOrderingMenuApp {
 
     // EFFECTS: displays a menu with options to user
     private void displayDrinkAddOnMenu() {
-        System.out.println("\n Pick one add on for 5 cents");
+        System.out.println("\n Pick one add on for " + AddOns.PRICE + " cents.");
         System.out.println("\ts -> sugar");
         System.out.println("\tc -> creamer");
         System.out.println("\tn -> none");

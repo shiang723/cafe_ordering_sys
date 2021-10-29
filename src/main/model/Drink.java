@@ -76,8 +76,8 @@ public class Drink implements MenuItem {
 
     // MODIFIES: this
     // EFFECTS: Add an AddOn to the AddOn list and changes the price, then return the changed Drink
-    public Drink addOptional(String addOnItem) {
-        this.addOns.add(new AddOns(addOnItem));
+    public Drink addOptional(String addOnItem, String addOnDescription) {
+        this.addOns.add(new AddOns(addOnItem, addOnDescription));
         this.price = this.price + ADD_PRICE;
         return this;
     }

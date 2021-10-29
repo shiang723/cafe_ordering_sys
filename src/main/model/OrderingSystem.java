@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import model.AddOns;
 
 //Represents the process of Ordering
 //totalPrice >= 0
@@ -10,7 +11,8 @@ public class OrderingSystem {
     private Integer totalPrice;
     private Integer numOfItems;
 
-    //OrderingSystem declares cart as a new ArrayList, and make totalPrice = 0 and numOfItems = 0
+    //EFFECTS: creates new Ordering System
+    //         and OrderingSystem declares cart as a new ArrayList, and make totalPrice = 0 and numOfItems = 0
     public OrderingSystem() {
         this.cart = new ArrayList<>();
         this.totalPrice = 0;

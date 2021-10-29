@@ -12,7 +12,7 @@ public class AddOnsTest {
 
     @BeforeEach
     public void setup() {
-        sugar = new AddOns("sugar");
+        sugar = new AddOns("sugar", "a teaspoon of sugar");
     }
 
     @Test
