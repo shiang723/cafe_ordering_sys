@@ -1,0 +1,16 @@
+{"cart": [
+  {
+    "drink price": 500,
+    "drink name": "Iced Coffee",
+    "drink description": "Classic Iced Coffee",
+    "drink addon": "",
+    "drink addon description": ""
+  },
+  {
+    "drink price": 505,
+    "drink name": "Iced Coffee",
+    "drink description": "Classic Iced Coffee",
+    "drink addon": "sugar",
+    "drink addon description": "some sugar"
+  }
+]}

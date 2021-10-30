@@ -50,4 +50,17 @@ class JsonReaderTest extends JsonTest {
             fail("Couldn't read from file");
         }
     }
+    @Test
+    void testReaderGeneralOrderingSystemNoBakeryItem() {
+        JsonReader reader = new JsonReader("./data/testReaderGeneralOrderingSystemNoBakeryItem.json");
+        try {
+            OrderingSystem os = reader.read();
+            ArrayList<MenuItem> items = os.getCart();
+            assertEquals(2, items.size());
+            checkMenuItem("Iced Coffee",500, "Classic Iced Coffee", items.get(0));
+            checkMenuItem("Iced Coffee", 505, "Classic Iced Coffee", items.get(1));
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+    }
 }
