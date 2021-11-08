@@ -60,6 +60,7 @@ public class JsonReader {
         }
     }
 
+    // REQUIRES: either key to have drink name or bakeryitem name
     // MODIFIES: os
     // EFFECTS: parses menuitem from JSON object and adds it to OrderingSystem
     private void addItem(OrderingSystem os, JSONObject jsonObject) {
@@ -74,7 +75,7 @@ public class JsonReader {
                 drink.addOptionalWithNoPrice(drinkAddOn, drinkAddOnDescription);
             }
             os.addItemToCart(drink);
-        } else if (jsonObject.has("bakeryitem name")) {
+        } else  {
             String bakeryItemName = jsonObject.getString("bakeryitem name");
             Integer bakeryItemPrice = jsonObject.getInt("bakeryitem price");
             String bakeryItemDescription = jsonObject.getString("bakeryitem description");

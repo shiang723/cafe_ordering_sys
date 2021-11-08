@@ -5,7 +5,7 @@ import org.json.JSONObject;
 // This [class/method] references code from these [repo/website]
 // Link: [https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git]
 // Represents the Add Ons, such as sugar or cream, for the drink
-// takes two parameters which are item = name of the item and amount = how much of it to add
+// takes two parameters which are item = name of the item and description of the item(string)
 public class AddOns {
 
     private String item;

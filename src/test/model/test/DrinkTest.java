@@ -10,6 +10,7 @@ import javax.xml.ws.RequestWrapper;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//Test for Drink class
 class DrinkTest {
 
     Drink espresso;
