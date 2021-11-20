@@ -55,23 +55,23 @@ public class OrderingSystemTest {
 
     @Test
     public void testEmptyReceipt() {
-        assertEquals("You have ordered: " + "[]" + "." + "Which is "
-                + "0" + " item(s). That will be " + "0" + " cents.", order1.receipt());
+        assertEquals("You have ordered: " + "[]" + " so far. " + "Which is "
+                + "0" + " item(s). That will be a total of " + "0" + " cents. \n", order1.receipt());
     }
 
     @Test
     public void testNonEmptyReceipt() {
         order1.addItemToCart(new BakeryItem("Cake", 600, "A pretty cake"));
-        assertEquals("You have ordered: " + "[Cake]" + "." + "Which is " + order1.getNumOfItems()
-                + " item(s). That will be " + order1.getTotalPrice() + " cents.", order1.receipt());
+        assertEquals("You have ordered: " + "[Cake]" + " so far. " + "Which is "
+                + 1 + " item(s). That will be a total of " + 600 + " cents. \n", order1.receipt());
 
         order1.addItemToCart(new Drink("Green Tea", 400, "Refreshing Green Tea"));
-        assertEquals("You have ordered: " + "[Cake, Green Tea]" + "." + "Which is " + order1.getNumOfItems()
-                + " item(s). That will be " + order1.getTotalPrice() + " cents.", order1.receipt());
+        assertEquals("You have ordered: " + "[Cake, Green Tea]" + " so far. " + "Which is "
+                + 2 + " item(s). That will be a total of " + order1.getTotalPrice() + " cents. \n", order1.receipt());
         drink1.addOptional("creamer", "a tablespoon of cream");
         order1.addItemToCart(drink1);
-        assertEquals("You have ordered: " + "[Cake, Green Tea, Iced Coffee]" + "." + "Which is " + order1.getNumOfItems()
-                + " item(s). That will be " + order1.getTotalPrice() + " cents.", order1.receipt());
+        assertEquals("You have ordered: " + "[Cake, Green Tea, Iced Coffee]" + " so far. " + "Which is " + order1.getNumOfItems()
+                + " item(s). That will be a total of " + order1.getTotalPrice() + " cents. \n", order1.receipt());
 
     }
 
