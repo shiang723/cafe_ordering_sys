@@ -55,8 +55,8 @@ public class OrderingSystem {
         for (MenuItem menuItem : cart) {
             finalOrder.add((menuItem.getName()));
         }
-        return "You have ordered: " + finalOrder + "." + "Which is "
-                + numOfItems + " item(s). That will be " + totalPrice + " cents.";
+        return "You have ordered: " + finalOrder + " so far. " + "Which is "
+                + numOfItems + " item(s). That will be a total of " + totalPrice + " cents. \n";
 
     }
 
