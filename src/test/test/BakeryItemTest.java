@@ -1,4 +1,4 @@
-package model.test;
+package test;
 
 import model.BakeryItem;
 import org.json.JSONObject;

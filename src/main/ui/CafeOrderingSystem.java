@@ -1,18 +1,13 @@
 package ui;
 
-import model.AddOns;
-import model.BakeryItem;
-import model.Drink;
-import model.OrderingSystem;
+import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -51,6 +46,8 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/order.json";
     private JButton clearItem;
     private JPanel addAndClear;
+    private static LogPrinter lp;
+
 
     // This [class/method] references code from these [repo/website]
     // Link: [https://stackoverflow.com/questions/6578205/swing-jlabel-text-change-on-the-running-application]
@@ -69,7 +66,6 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
         heading = new JLabel("Cafe Ordering System");
         heading.setFont(new Font("Calibri", Font.BOLD, 20));
         radioButtonMenu();
-        menuActionListener();
         addOnsDropDown();
         itemImages();
         addAndClearItemButton();
@@ -121,14 +117,14 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
         mainMenu.add(appleTartButton);
     }
 
-    //MODIFIES: this
-    // EFFECTS: Add action listeners to the radio buttons
-    public void menuActionListener() {
-        espressoButton.addActionListener(this);
-        icedCoffeeButton.addActionListener(this);
-        cakeButton.addActionListener(this);
-        appleTartButton.addActionListener(this);
-    }
+//    //MODIFIES: this
+//    // EFFECTS: Add action listeners to the radio buttons
+//    public void menuActionListener() {
+//        espressoButton.addActionListener(this);
+//        icedCoffeeButton.addActionListener(this);
+//        cakeButton.addActionListener(this);
+//        appleTartButton.addActionListener(this);
+//    }
 
     //MODIFIES: this
     // EFFECTS: Create drop down selection boxs for the addons items
@@ -137,10 +133,10 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
                 addOn2.getName() + " " + AddOns.PRICE + " cents"};
         addOnList1 = new JComboBox(addOnStrings);
         addOnList1.setSelectedIndex(0);
-        addOnList1.addActionListener(this);
+        //addOnList1.addActionListener(this);
         addOnList2 = new JComboBox(addOnStrings);
         addOnList2.setSelectedIndex(0);
-        addOnList2.addActionListener(this);
+        //addOnList2.addActionListener(this);
     }
 
     // This [class/method] references code from these [repo/website]
@@ -224,10 +220,23 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
         add(receiptScroll, BorderLayout.LINE_END);
     }
 
-    // EFFECTS: Creates a new CafeOrdering System
+    // This [class/method] references code from these [repo/website]
+    // Link: [https://examples.javacodegeeks.com/desktop-java/awt/event/window-closing-event-handling/]
+    // EFFECTS: Creates a new CafeOrdering System which will print log when closed
     public static void main(String[] args) {
-        new CafeOrderingSystem();
+        CafeOrderingSystem cos = new CafeOrderingSystem();
+        cos.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    lp.printLog(EventLog.getInstance());
+                } catch (LogException ex) {
+                    System.out.println("Log exception was thrown");
+                }
+            }
+        });
     }
+
 
     // MODIFIES: this
     // EFFECTS: What happens when an action happens within the GUI
@@ -235,15 +244,14 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
+        lp = new LogPrinter(CafeOrderingSystem.this);
         if (e.getActionCommand().equals("add")) {
-            espresso = new Drink("Espresso", 300, "A simple espresso.");
-            icedCoffee = new Drink("Iced Coffee", 500, "Classic Iced Coffee");
             menuSelection();
             receipt.setText("Your Order: \n" + cart.receipt());
         }
         if (e.getActionCommand().equals("clear")) {
-            receipt.setText("");
-            cart = new OrderingSystem();
+            receipt.setText("Your Order: \n");
+            cart.clearCart();
         }
         if (e.getActionCommand().equals("save")) {
             saveOrderingSystem();
@@ -260,7 +268,7 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
             jsonWriter.open();
             jsonWriter.write(cart);
             jsonWriter.close();
-            System.out.println("Saved order to " + JSON_STORE);
+            System.out.println("Saved order to " + JSON_STORE + "\n");
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -271,7 +279,7 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
     private void loadOrderingSystem() {
         try {
             cart = jsonReader.read();
-            receipt.setText("Your Order: " + cart.receipt());
+            receipt.setText("Your Order: \n" + cart.receipt());
             System.out.println("Loaded order from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
@@ -281,6 +289,8 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: what happens when one of the radio buttons is selected
     private void menuSelection() {
+        espresso = new Drink("Espresso", 300, "A simple espresso.");
+        icedCoffee = new Drink("Iced Coffee", 500, "Classic Iced Coffee");
         drinkSelection();
         if (mainMenu.getSelection().getActionCommand().equals("cake")) {
             cart.addItemToCart(cake);
@@ -316,4 +326,5 @@ public class CafeOrderingSystem extends JFrame implements ActionListener {
             cart.addItemToCart(drink);
         }
     }
+
 }

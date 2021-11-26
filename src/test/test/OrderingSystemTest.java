@@ -1,4 +1,4 @@
-package model.test;
+package test;
 
 import model.BakeryItem;
 import model.Drink;
@@ -92,13 +92,16 @@ public class OrderingSystemTest {
         JSONArray json3cart = json1.getJSONArray("cart");
         assertEquals(order2.getCart().size(),json3cart.length());
 
-
-
-
     }
 
+    @Test
+    public void testClearCart() {
+        order1.addItemToCart(new BakeryItem("Cake", 600, "A pretty cake"));
+        order2.addItemToCart(new Drink("Green Tea", 400, "Refreshing Green Tea"));
+        order1.clearCart();
+        assertEquals(0,order1.getCart().size());
 
-
+    }
 }
 
 

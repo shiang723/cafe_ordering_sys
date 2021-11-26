@@ -25,3 +25,18 @@ Busy Cafes can use this to help speed up their lines.
 - As a user, I want to be able to have a short description of the item
 - As a user, I want to be able to save my order to a file 
 - As a user, I want to be able to open up a previously saved file and resume ordering
+## Phase 4: Task 2
+Fri Nov 26 11:31:24 PST 2021
+Espresso for 300 cents was added to cart
+
+Fri Nov 26 11:31:27 PST 2021
+Iced Coffee for 500 cents was added to cart
+
+Fri Nov 26 11:31:29 PST 2021
+Cake for 600 cents was added to cart
+
+Fri Nov 26 11:31:31 PST 2021
+Apple Tart for 600 cents was added to cart
+
+Fri Nov 26 11:31:32 PST 2021
+Orders have been cleared.

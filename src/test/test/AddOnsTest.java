@@ -1,4 +1,4 @@
-package model.test;
+package test;
 
 import model.AddOns;
 import org.junit.jupiter.api.BeforeEach;

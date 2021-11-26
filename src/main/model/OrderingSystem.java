@@ -22,6 +22,17 @@ public class OrderingSystem {
         this.cart = new ArrayList<>();
         this.totalPrice = 0;
         this.numOfItems = 0;
+        EventLog.getInstance().logEvent((new Event("New Order has been created.")));
+    }
+
+    // MODIFIES: this
+    // EFFECTS: clears all the items in the ordering system
+    public OrderingSystem clearCart() {
+        this.cart = new ArrayList<>();
+        this.totalPrice = 0;
+        this.numOfItems = 0;
+        EventLog.getInstance().logEvent((new Event("Orders have been cleared.")));
+        return this;
     }
 
     // MODIFIES: this
@@ -29,6 +40,8 @@ public class OrderingSystem {
     //          as well as add to the totalPrice and numOfItems
     public OrderingSystem addItemToCart(MenuItem item) {
         this.cart.add(item);
+        EventLog.getInstance().logEvent(new Event(item.getName() + " for " + item.getPrice()
+                + " cents was added to cart"));
         this.totalPrice = totalPrice + item.getPrice();
         this.numOfItems++;
         return this;
