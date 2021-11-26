@@ -1,6 +1,5 @@
 package model;
 
-import model.EventLog;
 import ui.CafeOrderingSystem;
 
 // This [class/method] references code from these [repo/website]

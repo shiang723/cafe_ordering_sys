@@ -40,3 +40,6 @@ Apple Tart for 600 cents was added to cart
 
 Fri Nov 26 11:31:32 PST 2021
 Orders have been cleared.
+
+## Phase 4: Task 3
+- I would have refactored how CafeOrderingSystem associated with Drink and BakeryItem, I would probably just put that association with Menuitem instead of the subclasses.
