@@ -1,0 +1,14 @@
+{"cart": [
+    {
+        "drink addon": "sugar",
+        "drink addon description": "new sugar",
+        "drink price": 505,
+        "drink name": "Coffee",
+        "drink description": "original coffee"
+    },
+    {
+        "bakeryitem price": 600,
+        "bakeryitem description": "cake",
+        "bakeryitem name": "Cake"
+    }
+]}

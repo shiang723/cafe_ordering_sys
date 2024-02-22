@@ -1,0 +1,17 @@
+{"cart": [
+    {
+        "drink price": 305,
+        "drink name": "Espresso",
+        "drink description": "A simple espresso."
+    },
+    {
+        "bakeryitem price": 600,
+        "bakeryitem description": "A strawberry short cake.",
+        "bakeryitem name": "Cake"
+    },
+    {
+        "drink price": 555,
+        "drink name": "Iced Coffee",
+        "drink description": "Classic Iced Coffee"
+    }
+]}
