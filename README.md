@@ -1,4 +1,4 @@
-# My Personal Project
+# My Personal Project (For CPSC 210 at UBC moved to personal github from school github account)
 
 ## What will the application do?
 My application will be a Cafe ordering Menu, where users will be able to select and customize their order. 
